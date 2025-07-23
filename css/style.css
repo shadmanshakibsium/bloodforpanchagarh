@@ -1,0 +1,203 @@
+/* ====== Common Styles ====== */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f6f9fc;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
+}
+
+h1 {
+  color: #c70039;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+ul.upazila-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  max-width: 700px;
+  margin: auto;
+}
+
+ul.upazila-list li {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+ul.upazila-list li:hover {
+  transform: scale(1.05);
+}
+
+a {
+  text-decoration: none;
+  color: #c70039;
+  font-weight: bold;
+  display: block;
+}
+
+footer {
+  margin-top: 50px;
+  font-size: 0.9em;
+  color: #888;
+}
+
+/* ====== Dark Mode ====== */
+
+body.dark-mode {
+  background: #121212;
+  color: #eee;
+}
+
+body.dark-mode ul.upazila-list li {
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.05);
+}
+
+body.dark-mode a {
+  color: #ff6b81;
+}
+
+body.dark-mode footer {
+  color: #bbb;
+}
+
+/* ====== Toggle Buttons (Dark Mode & Language) ====== */
+
+.toggle-btn, .language-btn {
+  position: fixed;
+  top: 15px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background 0.3s, color 0.3s;
+}
+
+.toggle-btn {
+  right: 15px;
+  background: #c70039;
+  color: #fff;
+}
+
+.language-btn {
+  left: 15px;
+  background: #007bff;
+  color: #fff;
+  margin-left: 10px;
+}
+
+body.dark-mode .toggle-btn {
+  background: #ff6b81;
+  color: #121212;
+}
+
+body.dark-mode .language-btn {
+  background: #3399ff;
+  color: #121212;
+}
+
+/* ====== Eligibility Section ====== */
+
+.eligibility {
+  background: #fff;
+  padding: 20px;
+  margin-top: 40px;
+  border-radius: 12px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+body.dark-mode .eligibility {
+  background: #1e1e1e;
+}
+
+.eligibility h2 {
+  color: #c70039;
+  margin-bottom: 15px;
+}
+
+.eligibility ul {
+  list-style: disc inside;
+  padding-left: 20px;
+}
+
+.eligibility p em {
+  font-style: italic;
+  color: #555;
+}
+
+body.dark-mode .eligibility p em {
+  color: #ccc;
+}
+
+/* ====== Hadith Section ====== */
+
+.hadith {
+  margin-top: 20px;
+  font-style: italic;
+  color: #555;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.dark-mode .hadith {
+  color: #ccc;
+}
+
+/* ====== Best Donor and Join Buttons ====== */
+
+.best-donor-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  margin-top: 30px;
+  background-color: #c70039;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  transition: background 0.3s, transform 0.2s;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.best-donor-btn:hover {
+  background-color: #a1002f;
+  transform: translateY(-2px);
+}
+
+body.dark-mode .best-donor-btn {
+  background-color: #ff6b81;
+  color: #121212;
+}
+
+body.dark-mode .best-donor-btn:hover {
+  background-color: #ff4757;
+}
+
+/* ====== Responsive ====== */
+
+@media (max-width: 480px) {
+  ul.upazila-list {
+    grid-template-columns: 1fr;
+  }
+}
