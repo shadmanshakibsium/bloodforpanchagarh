@@ -2,68 +2,18 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>বোদা উপজেলা - রক্তের গ্রুপসমূহ</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f6f9fc;
-      color: #333;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      color: #c70039;
-      margin-bottom: 10px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    li {
-      background-color: #fff;
-      padding: 15px;
-      border-radius: 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
-    }
-
-    li:hover {
-      transform: scale(1.05);
-    }
-
-    a {
-      text-decoration: none;
-      color: #c70039;
-      font-weight: bold;
-      display: block;
-      font-size: 1.1em;
-    }
-
-    a.back-link {
-      margin-top: 30px;
-      display: inline-block;
-      font-size: 0.9em;
-      color: #888;
-      font-weight: normal;
-      text-decoration: none;
-    }
-  </style>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="../js/settings.js" defer></script>
 </head>
 <body>
+  <button class="toggle-btn" onclick="toggleDarkMode()">🌙 ডার্ক মোড</button>
+  <button class="language-btn" onclick="toggleLanguage()">EN</button>
 
   <h1>বোদা উপজেলার রক্তের গ্রুপসমূহ</h1>
 
-  <ul>
+  <ul class="upazila-list">
     <li><a href="boda/a_plus.html">A+</a></li>
     <li><a href="boda/a_negative.html">A−</a></li>
     <li><a href="boda/b_plus.html">B+</a></li>
@@ -75,6 +25,5 @@
   </ul>
 
   <a href="../index.html" class="back-link">← হোমপেজে ফিরে যান</a>
-
 </body>
 </html>
