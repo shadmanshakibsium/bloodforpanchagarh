@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>পঞ্চগড় সদর - O+ রক্তদাতা</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fefefe;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #c70039;
+      margin-bottom: 20px;
+    }
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      width: 90%;
+      max-width: 600px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+    th {
+      background-color: #f2f2f2;
+      color: #c70039;
+    }
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+    input {
+      margin-bottom: 20px;
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .back-link {
+      margin-top: 30px;
+      display: inline-block;
+      font-size: 0.9em;
+      color: #888;
+      text-decoration: none;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>পঞ্চগড় সদর - O+ রক্তদাতা</h1>
+
+  <input type="text" id="search" placeholder="খুঁজুন নাম বা লোকেশন..." onkeyup="filterDonors()"/>
+
+  <table id="donorTable">
+    <thead>
+      <tr>
+        <th>নাম</th>
+        <th>মোবাইল</th>
+        <th>অবস্থান</th>
+      </tr>
+    </thead>
+    <tbody id="donorBody">
+      <tr><td>মোঃ শাকিল ইসলাম</td><td><a href="tel:+8801644786993">+8801644786993</a></td><td>মাহানপাড়া, দেওয়ানহাট</td></tr>
+      <tr><td>ফারহান ইশতিয়াক তানভীর</td><td><a href="tel:+8801608141184">+8801608141184</a></td><td>কামারপাড়া, হাড়িভাসা</td></tr>
+      <tr><td>তাসফিকুর রাহমান তামিম</td><td><a href="tel:+8801790723286">+8801790723286</a></td><td>গোফাপাড়া(দেওয়ানহাট এরিয়া)</td></tr>
+<tr><td>মহসিন</td><td><a href="tel:+8801912156098">+8801912156098</a></td><td>সর্দারপাড়া,জগদল</td></tr>
+    </tbody>
+  </table>
+
+  <a class="back-link" href="../atwari.html">← রক্তের গ্রুপে ফিরে যান</a>
+
+  <script>
+    // তালিকা ফিল্টার
+    function filterDonors() {
+      const input = document.getElementById("search").value.toLowerCase();
+      const rows = document.querySelectorAll("#donorTable tbody tr");
+
+      rows.forEach(row => {
+        const name = row.cells[0].textContent.toLowerCase();
+        const location = row.cells[2].textContent.toLowerCase();
+        row.style.display = name.includes(input) || location.includes(input) ? "" : "none";
+      });
+    }
+
+    // শাফল ফাংশন
+    function shuffleDonors() {
+      const tbody = document.getElementById("donorBody");
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+      
+      for (let i = rows.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [rows[i], rows[j]] = [rows[j], rows[i]];
+      }
+
+      // পুরানো ক্লিয়ার করে আবার যোগ করা
+      tbody.innerHTML = '';
+      rows.forEach(row => tbody.appendChild(row));
+    }
+
+    // পেজ লোড হলে শাফল চালু
+    window.onload = shuffleDonors;
+  </script>
+
+  <footer>
+    পরিচালনায়: <strong>সাদমান সাকিব সিয়াম</strong><br>
+    মোবাইল: <a href="tel:01518938215">01518938215</a> <br> 
+    ইমেইল: <a href="mailto:mdshadmanshakibsium@gmail.com">mdshadmanshakibsium@gmail.com</a><br> 
+    হোস্টেড অন GitHub Pages
+  </footer>
+
+</body>
+</html>

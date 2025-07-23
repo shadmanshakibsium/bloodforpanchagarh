@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>পঞ্চগড় সদর - AB- রক্তদাতা</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fefefe;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #c70039;
+      margin-bottom: 20px;
+    }
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      width: 90%;
+      max-width: 600px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+    th {
+      background-color: #f2f2f2;
+      color: #c70039;
+    }
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+    input {
+      margin-bottom: 20px;
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .back-link {
+      margin-top: 30px;
+      display: inline-block;
+      font-size: 0.9em;
+      color: #888;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>পঞ্চগড় সদর - AB- রক্তদাতা</h1>
+
+  <input type="text" id="search" placeholder="খুঁজুন নাম বা লোকেশন..." onkeyup="filterDonors()"/>
+
+  <table id="donorTable">
+    <thead>
+      <tr>
+        <th>নাম</th>
+        <th>মোবাইল</th>
+        <th>অবস্থান</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td></td><td><a href="tel:+88">+88</a></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <a class="back-link" href="../atwari.html">← রক্তের গ্রুপে ফিরে যান</a>
+
+  <script>
+    function filterDonors() {
+      const input = document.getElementById("search").value.toLowerCase();
+      const rows = document.querySelectorAll("#donorTable tbody tr");
+
+      rows.forEach(row => {
+        const name = row.cells[0].textContent.toLowerCase();
+        const location = row.cells[2].textContent.toLowerCase();
+        row.style.display = name.includes(input) || location.includes(input) ? "" : "none";
+      });
+    }
+  </script>
+
+
+<footer>
+  পরিচালনায়: <strong>annonymous</strong><br>
+  মোবাইল: <a href="tel:"></a> <br> 
+  ইমেইল: <a href="mailto:"></a><br> 
+  হোস্টেড অন GitHub Pages
+</footer>
+
+
+</body>
+</html>
