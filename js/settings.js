@@ -1,35 +1,40 @@
 // ডার্ক মোড ও ভাষা কনফিগারেশন - settings.js
 
-// পেজ লোড হওয়ার সময়
 window.addEventListener("DOMContentLoaded", () => {
-  // ডার্ক মোড অ্যাপ্লাই করো, যদি আগে সেট করা থাকে
+  // 🔲 আগে সেট করা থাকলে ডার্ক মোড অ্যাপ্লাই করো
   const darkMode = localStorage.getItem("darkMode");
   if (darkMode === "enabled") {
     document.body.classList.add("dark-mode");
   }
 
-  // আগে সেট করা ভাষা নিয়ে ইউজারকে সঠিক হোমপেজে রিডাইরেক্ট করো (শুধুমাত্র রুট পেজের জন্য)
+  // 🌐 আগে সেট করা ভাষা অনুযায়ী ইউজারকে সঠিক ভার্সনে রাখো
   const lang = localStorage.getItem("language");
   const path = window.location.pathname;
 
-  if (path === "/" || path === "/index.html" || path === "/en/index.html") {
-    if (lang === "en" && !path.includes("/en/")) {
-      window.location.href = "/en/index.html";
+  // ✅ রিডাইরেক্ট যদি ভাষা এবং পাথ মিসম্যাচ করে
+  if (lang === "en" && !path.startsWith("/en/")) {
+    // যদি পাথ /en দিয়ে শুরু না করে, ইংরেজি ফোল্ডারে পাঠাও
+    const newPath = "/en" + path;
+    if (!window.location.pathname.startsWith("/en/")) {
+      window.location.href = newPath;
     }
-    if (lang === "bn" && path.includes("/en/")) {
-      window.location.href = "/index.html";
-    }
+  }
+
+  if (lang === "bn" && path.startsWith("/en/")) {
+    // যদি পাথ ভুল করে /en থাকে অথচ ভাষা বাংলা, তাহলে সেট সরাও
+    const newPath = path.replace("/en", "") || "/";
+    window.location.href = newPath;
   }
 });
 
-// ডার্ক মোড টগল ফাংশন
+// 🌙 ডার্ক মোড টগল ফাংশন
 function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");
   const enabled = document.body.classList.contains("dark-mode");
   localStorage.setItem("darkMode", enabled ? "enabled" : "disabled");
 }
 
-// শুধু হোম পেজে যাওয়ার জন্য ইংরেজি স্যুইচার (প্রয়োজন নাই, তবে রেখেছি)
+// 🌐 নির্দিষ্টভাবে ইংরেজি বা বাংলা স্যুইচ
 function switchToEnglish() {
   localStorage.setItem("language", "en");
   window.location.href = "/en/index.html";
@@ -40,17 +45,17 @@ function switchToBangla() {
   window.location.href = "/index.html";
 }
 
-// যেকোন পেজ থেকে বাংলা ↔ ইংরেজি পরিবর্তনের জন্য টগল ফাংশন
+// 🔁 যেকোন পেজ থেকে ভাষা টগল ফাংশন
 function toggleLanguage() {
   const path = window.location.pathname;
 
   if (path.startsWith("/en/")) {
-    // ইংরেজি থেকে বাংলা
+    // ইংরেজি → বাংলা
     const newPath = path.replace("/en", "") || "/";
     localStorage.setItem("language", "bn");
     window.location.href = newPath;
   } else {
-    // বাংলা থেকে ইংরেজি
+    // বাংলা → ইংরেজি
     localStorage.setItem("language", "en");
     if (path === "/" || path === "/index.html") {
       window.location.href = "/en/index.html";
