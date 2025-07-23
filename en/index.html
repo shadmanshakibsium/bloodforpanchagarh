@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find Blood Donors</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f6f9fc;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      background: #121212;
+      color: #eee;
+    }
+
+    h1 {
+      color: #c70039;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+    }
+
+    .upazila-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .upazila-list li {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .dark-mode .upazila-list li {
+      background-color: #1e1e1e;
+      box-shadow: 0 2px 6px rgba(255,255,255,0.05);
+    }
+
+    .upazila-list li:hover {
+      transform: scale(1.05);
+    }
+
+    a {
+      text-decoration: none;
+      color: #c70039;
+      font-weight: bold;
+      display: block;
+    }
+
+    .dark-mode a {
+      color: #ff6b81;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      padding: 8px 12px;
+      background: #c70039;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .language-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      padding: 8px 12px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .dark-mode .language-btn {
+      background: #3399ff;
+      color: #121212;
+    }
+
+    .eligibility {
+      background: #fff;
+      padding: 20px;
+      margin-top: 40px;
+      border-radius: 12px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .dark-mode .eligibility {
+      background: #1e1e1e;
+    }
+
+    .eligibility h2 {
+      color: #c70039;
+    }
+
+    .eligibility ul {
+      list-style: disc;
+      text-align: left;
+      padding-left: 30px;
+    }
+
+    .hadith {
+      margin-top: 20px;
+      font-style: italic;
+      color: #555;
+    }
+
+    .dark-mode .hadith {
+      color: #ccc;
+    }
+
+    .best-donor-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      margin-top: 30px;
+      background-color: #c70039;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      transition: background 0.3s, transform 0.2s;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .best-donor-btn:hover {
+      background-color: #a1002f;
+      transform: translateY(-2px);
+    }
+
+    .dark-mode .best-donor-btn {
+      background-color: #ff6b81;
+      color: #121212;
+    }
+
+    .dark-mode .best-donor-btn:hover {
+      background-color: #ff4757;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Language and Theme toggle -->
+  <button class="language-btn" onclick="window.location.href='../index.html'">🌐 বাংলা</button>
+  <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
+  <h1>🩸 Find Blood Donors</h1>
+  <p>Select your upazila to view available donors:</p>
+
+  <ul class="upazila-list">
+    <li><a href="../blood/atwari.html">Atwari Upazila</a></li>
+    <li><a href="../blood/tetulia.html">Tetulia Upazila</a></li>
+    <li><a href="../blood/debiganj.html">Debiganj Upazila</a></li>
+    <li><a href="../blood/sadar.html">Panchagarh Sadar</a></li>
+    <li><a href="../blood/boda.html">Boda Upazila</a></li>
+  </ul>
+
+  <a href="../blood/best-donors.html" class="best-donor-btn">🏆 Top Donors</a>
+  <a href="https://wa.me/8801518938215?text=Name:%20%0ABlood%20Group:%20%0APhone:%20%0ALocation:%20-%0AVillage/City:%20%0AUnion/Municipality:%20%0AUpazila:%20" 
+     class="best-donor-btn">
+     🩸 Join as Donor
+  </a>
+
+  <section class="eligibility">
+    <h2>✅ Who Can Donate Blood:</h2>
+    <ul>
+      <li><strong>Age:</strong> Anyone between 18–60 years old can donate.</li>
+      <li><strong>Weight:</strong> Minimum 48 kg for men, 45 kg for women.</li>
+      <li><strong>Medical history:</strong> Wait at least 1 year after recovering from jaundice, malaria, or blood-borne diseases.</li>
+      <li><strong>Women:</strong> Pregnant or breastfeeding women should avoid donating blood.</li>
+      <li><strong>Previous donation:</strong> Wait at least 4 months between donations.</li>
+      <li><strong>After surgery:</strong> Avoid donating within 6 months of major surgery.</li>
+    </ul>
+
+    <p><em>📌 Tip: Make sure you’re physically fit before donating blood. Consult a doctor if unsure.</em></p>
+
+    <div class="hadith">
+      Hadith: “Whoever saves a life, it is as if he saved all mankind.” — [Surah Al-Ma'idah 5:32]
+    </div>
+  </section>
+
+  <section>
+    <p>💌 If this small effort helps you or someone else, please let us know.<br>
+    Your feedback means a lot and will inspire us to do better.</p><br>
+    <p>📧 Email: <a href="mailto:mdshadmanshakibsium@gmail.com">mdshadmanshakibsium@gmail.com</a><br></p>
+  </section>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
+
+</body>
+</html>
