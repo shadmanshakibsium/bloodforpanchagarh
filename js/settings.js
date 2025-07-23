@@ -12,18 +12,31 @@ window.addEventListener("DOMContentLoaded", () => {
   const path = window.location.pathname;
 
   // ✅ রিডাইরেক্ট যদি ভাষা এবং পাথ মিসম্যাচ করে
-  if (lang === "en" && !path.startsWith("/en/")) {
-    // যদি পাথ /en দিয়ে শুরু না করে, ইংরেজি ফোল্ডারে পাঠাও
-    const newPath = "/en" + path;
-    if (!window.location.pathname.startsWith("/en/")) {
-      window.location.href = newPath;
-    }
+  if (lang === "en" && path.startsWith("/en/") === false) {
+    // ইংরেজি ভাষা হলেও /en না থাকলে /en যুক্ত করা যাবে, কিন্তু আপনি চান না? তাই এটা বাদ দিলাম।
+    // যদি প্রয়োজন হয় uncomment করতে পারেন।
+    // const newPath = "/en" + path;
+    // window.location.href = newPath;
   }
 
   if (lang === "bn" && path.startsWith("/en/")) {
-    // যদি পাথ ভুল করে /en থাকে অথচ ভাষা বাংলা, তাহলে সেট সরাও
+    // বাংলা ভাষায় /en থাকলে সরিয়ে দাও
     const newPath = path.replace("/en", "") || "/";
     window.location.href = newPath;
+  }
+
+  // 🔗 /en/blood/ এর ভেতর থেকে কোন লিঙ্কে ক্লিক করলে /blood/ এ নিয়ে যাবে
+  if (path.startsWith("/en/blood/")) {
+    const links = document.querySelectorAll("a[href^='/en/blood/']");
+
+    links.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const href = link.getAttribute("href");
+        const newHref = href.replace("/en", ""); // /en অংশ সরানো
+        window.location.href = newHref;
+      });
+    });
   }
 });
 
@@ -37,12 +50,25 @@ function toggleDarkMode() {
 // 🌐 নির্দিষ্টভাবে ইংরেজি বা বাংলা স্যুইচ
 function switchToEnglish() {
   localStorage.setItem("language", "en");
-  window.location.href = "/en/index.html";
+  // ইংরেজি পেজে সরাসরি নিয়ে যাও (এখানে /en ছাড়া হলে ঠিক করবেন)
+  const path = window.location.pathname;
+  if (path.startsWith("/en/")) {
+    // ইতিমধ্যে /en পাথ আছে
+    window.location.reload();
+  } else {
+    window.location.href = "/en" + path;
+  }
 }
 
 function switchToBangla() {
   localStorage.setItem("language", "bn");
-  window.location.href = "/index.html";
+  const path = window.location.pathname;
+  if (path.startsWith("/en/")) {
+    const newPath = path.replace("/en", "") || "/";
+    window.location.href = newPath;
+  } else {
+    window.location.reload();
+  }
 }
 
 // 🔁 যেকোন পেজ থেকে ভাষা টগল ফাংশন
@@ -57,6 +83,7 @@ function toggleLanguage() {
   } else {
     // বাংলা → ইংরেজি
     localStorage.setItem("language", "en");
+    // ইংরেজি পাথ থেকে যাওয়ার সময় /en যোগ করা, তবে আপনি চাইলে এখানে `/en` না ও দিতে পারেন
     if (path === "/" || path === "/index.html") {
       window.location.href = "/en/index.html";
     } else {
